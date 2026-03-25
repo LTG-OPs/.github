@@ -1,0 +1,284 @@
+# =============================================================================
+# GitHub Actions Labeler Configuration (actions/labeler@v6)
+# Organisation: LTG-OPs
+# Erstellt: 2026-03-25
+#
+# Ablageort: .github/labeler.yml
+#
+# Zugehöriger Workflow (.github/workflows/labeler.yml):
+#
+#   name: "Pull Request Labeler"
+#   on:
+#     - pull_request_target
+#   jobs:
+#     labeler:
+#       permissions:
+#         contents: read
+#         pull-requests: write
+#       runs-on: ubuntu-latest
+#       steps:
+#         - uses: actions/labeler@v6
+# =============================================================================
+
+# ─── ROLLE-Labels ────────────────────────────────────────────────────────────
+
+"rolle:backend":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.php"
+          - "**/*.xml"
+          - "**/composer.json"
+          - "**/composer.lock"
+          - "**/phpunit.xml*"
+          - "**/phpstan*.neon"
+          - "**/ecs.php"
+          - "**/rector.php"
+          - "**/Migration/**"
+          - "**/Controller/**"
+          - "**/Service/**"
+          - "**/Repository/**"
+          - "**/Entity/**"
+          - "**/Command/**"
+          - "**/Subscriber/**"
+
+"rolle:frontend":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.vue"
+          - "**/*.ts"
+          - "**/*.tsx"
+          - "**/*.js"
+          - "**/*.jsx"
+          - "**/*.css"
+          - "**/*.scss"
+          - "**/*.less"
+          - "**/*.svg"
+          - "**/nuxt.config.*"
+          - "**/tailwind.config.*"
+          - "**/vite.config.*"
+          - "**/tsconfig.json"
+          - "**/package.json"
+          - "**/package-lock.json"
+          - "**/pnpm-lock.yaml"
+          - "**/bun.lockb"
+          - "**/components/**"
+          - "**/pages/**"
+          - "**/layouts/**"
+          - "**/composables/**"
+          - "**/stores/**"
+          - "**/assets/**"
+          - "**/public/**"
+          - "**/Pond/**"
+          - "**/pond/**"
+
+"rolle:devops":
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/**"
+          - "**/Dockerfile*"
+          - "**/docker-compose*"
+          - "**/.docker/**"
+          - "**/Makefile"
+          - "**/Taskfile*"
+          - "**/.env.example"
+          - "**/deploy/**"
+          - "**/infra/**"
+          - "**/terraform/**"
+          - "**/k8s/**"
+          - "**/helm/**"
+          - "**/*.sh"
+          - "**/nginx*.conf"
+          - "**/Caddyfile"
+          - "**/GitDashboard/**"
+
+"rolle:ux":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.figma"
+          - "**/*.sketch"
+          - "**/*.xd"
+          - "**/*.psd"
+          - "**/design/**"
+          - "**/mockups/**"
+          - "**/wireframes/**"
+          - "**/icons/**"
+          - "**/*.png"
+          - "**/*.jpg"
+          - "**/*.jpeg"
+          - "**/*.webp"
+          - "**/*.gif"
+
+# ─── TYP-Labels ──────────────────────────────────────────────────────────────
+
+"typ:bug":
+  - head-branch: ["^fix", "^bugfix", "^hotfix"]
+
+"typ:feature":
+  - head-branch: ["^feature", "^feat"]
+
+"typ:enhancement":
+  - head-branch: ["^improve", "^enhance", "^refine"]
+
+"typ:tech-debt":
+  - head-branch: ["^refactor", "^cleanup", "^tech-debt"]
+
+"typ:spike":
+  - head-branch: ["^spike", "^research", "^poc", "^prototype"]
+
+"typ:dokumentation":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.md"
+          - "**/docs/**"
+          - "**/documentation/**"
+          - "**/*.adoc"
+          - "**/CHANGELOG*"
+          - "**/LICENSE*"
+          - "**/CONTRIBUTING*"
+
+"typ:devops":
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/workflows/**"
+          - ".github/actions/**"
+          - "**/Dockerfile*"
+          - "**/docker-compose*"
+          - "**/deploy/**"
+          - "**/infra/**"
+          - "**/terraform/**"
+          - "**/k8s/**"
+
+"typ:security":
+  - any:
+      - head-branch: ["^security", "^sec/", "^cve"]
+      - changed-files:
+          - any-glob-to-any-file:
+              - "**/security/**"
+              - "**/.snyk"
+              - "**/SECURITY.md"
+
+"typ:integration":
+  - any:
+      - head-branch: ["^integration", "^api/"]
+      - changed-files:
+          - any-glob-to-any-file:
+              - "**/Api/**"
+              - "**/api/**"
+              - "**/integration/**"
+              - "**/connector/**"
+              - "**/webhook/**"
+
+"typ:shopentwicklung":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/Storefront/**"
+          - "**/storefront/**"
+          - "**/ThemeConfig/**"
+          - "**/theme.json"
+          - "**/Theme/**"
+          - "**/raw2rare-shop/**"
+          - "**/raw2rare/**"
+
+"typ:shopware-plugin":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/plugin.xml"
+          - "**/src/Resources/config/**"
+          - "**/src/Resources/views/**"
+          - "**/src/Resources/app/**"
+          - "**/src/Resources/snippet/**"
+          - "**/FixturesPlugin/**"
+          - "**/fixtures/**"
+          - "**/Custom-Fields-Plugin/**"
+          - "**/Form-Builder-Plugin/**"
+          - "**/SEO-Plugin-Extreme/**"
+          - "**/Voucher-Plugin/**"
+          - "**/Pond-Companion-Plugin/**"
+
+"typ:tool":
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/scripts/**"
+          - "**/tools/**"
+          - "**/bin/**"
+          - "**/cli/**"
+          - "**/util/**"
+          - "**/utils/**"
+          - "**/OptiPack/**"
+          - "**/optipack/**"
+          - "**/api-faker/**"
+          - "**/NPM-Direct-Source-Download/**"
+
+# ─── ENV-Labels ──────────────────────────────────────────────────────────────
+
+"env:production":
+  - base-branch: ["^main$", "^master$", "^production$"]
+
+"env:staging":
+  - base-branch: ["^staging$", "^stage$", "^preprod$"]
+
+"env:development":
+  - base-branch: ["^develop$", "^dev$", "^development$"]
+
+# ─── SHOP-Labels ─────────────────────────────────────────────────────────────
+
+"shop:bethge":
+  - any:
+      - changed-files:
+          - any-glob-to-any-file: ["**/bethge/**"]
+      - head-branch: ["bethge"]
+
+"shop:legendaer":
+  - any:
+      - changed-files:
+          - any-glob-to-any-file: ["**/legendaer/**", "**/lgndr/**"]
+      - head-branch: ["legendaer", "lgndr"]
+
+"shop:leuchtturm":
+  - any:
+      - changed-files:
+          - any-glob-to-any-file: ["**/leuchtturm/**", "**/leuchtturm-de/**"]
+      - head-branch: ["leuchtturm-de"]
+
+"shop:leuchtturm1917":
+  - any:
+      - changed-files:
+          - any-glob-to-any-file: ["**/leuchtturm1917/**", "**/lt1917/**"]
+      - head-branch: ["leuchtturm1917", "lt1917"]
+
+"shop:semikolon":
+  - any:
+      - changed-files:
+          - any-glob-to-any-file: ["**/semikolon/**"]
+      - head-branch: ["semikolon"]
+
+"shop:stilform":
+  - any:
+      - changed-files:
+          - any-glob-to-any-file: ["**/stilform/**"]
+      - head-branch: ["stilform"]
+
+"shop:torquato":
+  - any:
+      - changed-files:
+          - any-glob-to-any-file: ["**/torquato/**"]
+      - head-branch: ["torquato"]
+
+"shop:treuleben":
+  - any:
+      - changed-files:
+          - any-glob-to-any-file: ["**/treuleben/**"]
+      - head-branch: ["treuleben"]
+
+# =============================================================================
+# NICHT AUTOMATISIERBARE LABELS (müssen manuell/per Triage gesetzt werden):
+#
+#   Agentur:   agentur:basecom, agentur:intern, agentur:strix
+#   Aufwand:   aufwand:xs, aufwand:s, aufwand:m, aufwand:l, aufwand:xl
+#   Priorität: prio:p0-kritisch, prio:p1-hoch, prio:p2-mittel, prio:p3-niedrig
+#   Status:    status:backlog, status:blocked, status:done, status:in-progress,
+#              status:in-review, status:on-hold, status:qa, status:sprint-backlog,
+#              status:to-do, status:wont-fix
+#   Sonstige:  duplicate, good-first-issue, help-wanted, invalid,
+#              needs-discussion, needs-review
+# =============================================================================
